@@ -1,0 +1,16 @@
+type: object
+properties:
+  name:
+    description: Product name
+    minLength: 1
+    type: string
+    example: Product1
+  description:
+    description: Product description
+    type: string
+    minLength: 1
+    example: Product description
+  isActive:
+    description: Product active or not
+    type: boolean
+    example: true

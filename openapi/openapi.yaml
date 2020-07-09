@@ -1,0 +1,40 @@
+openapi: 3.0.2
+info:
+  version: 1.0.0
+  title: BuzPOS
+  termsOfService: "https://example.com/terms/"
+  contact:
+    name: buzpos
+    email: contact@example.com
+    url: "http://example.com/contact"
+  license:
+    name: Apache 2.0
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+  x-logo:
+    url: "https://redocly.github.io/openapi-template/logo.png"
+  description: >
+    This is an **BuzPOS** API
+
+externalDocs:
+  description: Find out how to create a GitHub repo for your OpenAPI definition.
+  url: "https://github.com/Rebilly/generator-openapi-repo"
+tags:
+  - name: Products
+    description: Operations on Products
+servers:
+  - url: "http://example.com/api/v1"
+  - url: "https://example.com/api/v1"
+paths:
+  /products:
+    $ref: paths\products.yaml
+  /products/{id}:
+    $ref: paths\products@{id}.yaml
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      in: header
+      name: api_key
+    basic_auth:
+      type: http
+      scheme: basic

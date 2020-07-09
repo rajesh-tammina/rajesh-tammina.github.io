@@ -1,0 +1,113 @@
+put:
+  tags:
+    - Products
+  summary: Products Update
+  description: Products description
+  operationId: productupdate
+  parameters:
+    - name: id
+      in: path
+      description: The id of the product which need to be updated
+      required: true
+      schema:
+        type: string
+  security:
+    - api_key: ["test"]
+    - basic_auth: []
+  responses:
+    "200":
+      description: OK
+      headers:
+        X-Rate-Limit:
+          description: calls per hour allowed by the user
+          schema:
+            type: integer
+            format: int32
+        X-Expires-After:
+          $ref: ..\components\headers\ExpiresAfter.yaml
+      content:
+        application/json:
+          schema:
+            type: string
+          examples:
+            response:
+              value: Update successfully
+        application/xml:
+          schema:
+            type: string
+        text/csv:
+          schema:
+            type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '..\components\schemas\Products.yaml'
+      application/xml:
+        schema:
+          type: string
+          example: Hello world!
+    description: Echo payload
+    required: true
+get:
+  tags:
+    - Products
+  summary: Get Product by product id
+  description: |
+    Get product based on id
+  operationId: getProductByid
+  parameters:
+    - name: id
+      in: path
+      description: The id of the product which need to be updated
+      required: true
+      schema:
+        type: string
+  security:
+    - api_key: []
+  responses:
+    "200":
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ..\components\schemas\Products.yaml
+          example:
+            id: 111
+            name: Product1
+            description: Product Description
+    "403":
+      description: Forbidden
+    "404":
+      description: Product not found
+
+delete:
+  tags:
+    - Products
+  summary: Delete Product by product id
+  description: |
+    Delete product based on id
+  operationId: deleteProductByid
+  parameters:
+    - name: id
+      in: path
+      description: The id of the product which need to be deleted
+      required: true
+      schema:
+        type: string
+  security:
+    - api_key: []
+  responses:
+    "200":
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: string
+          examples:
+            response:
+              value: Deleted successfully
+    "403":
+      description: Forbidden
+    "404":
+      description: Product not found
